@@ -16,7 +16,7 @@ export default class layaboxEsbuild {
   /**
    * 开始构建
    */
-  public static async start(config: IConfig) {
+  static async start(config: IConfig) {
     MainConfig.config = config;
     //代理src
     let strProxyPort = await SrcProxy.start();
@@ -27,7 +27,7 @@ export default class layaboxEsbuild {
     console.log(
       chalk.magenta('本地主页:'),
       chalk.blue(HttpTool.getPath('local', binProxyPort)),
-      chalk.green('推荐>更快⚡'),
+      chalk.green('推荐⚡'),
     );
     console.log(
       chalk.magenta('局域网主页:'),

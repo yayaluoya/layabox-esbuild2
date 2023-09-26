@@ -8,8 +8,8 @@ window.addEventListener('load', function () {
             <div class="content">
                 <div class="mes">消息</div>
                 <div class="but">
-                    <button class="yes">确认✔️</button>
                     <button class="no">取消❌</button>
+                    <button class="yes">确认✔️</button>
                 </div>
             </div>
         </div>
@@ -97,12 +97,24 @@ window.addEventListener('load', function () {
     //监听消息
     new EventSource(esbuildTool.config.esbuildE).addEventListener('change', (event) => {
       const { added, removed, updated } = JSON.parse(event.data);
+      let type;
+      let value;
+      if (added && added.length > 0) {
+        type = 'added';
+        value = added;
+      } else if (removed && removed.length > 0) {
+        type = 'removed';
+        value = removed;
+      } else if (updated && updated.length > 0) {
+        type = 'updated';
+        value = updated;
+      }
       _updateNumber++;
       // 处理数据
       console.log(
         ...esbuildTool.consoleEx.pack(
           esbuildTool.consoleEx.getStyle('#eeeeee', '#08d9d6'),
-          updated,
+          type + ':' + value,
         ),
       );
       //弹出提示框
@@ -130,7 +142,6 @@ window.addEventListener('load', function () {
       }
     });
 
-    // 监听页面焦点事件
     if (esbuildTool.config.ifUpdateNow) {
       //根据不同浏览器获取属性名称
       let hidden, visibilityChange;

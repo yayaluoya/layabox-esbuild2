@@ -42,15 +42,13 @@ export default class HttpTool {
         this.m_hostName = MainConfig.config.hostName!;
         if (!this.m_hostName) {
           console.log(
-            chalk.red(
-              `自动获取主机地址失败！请在配置文件中配置正确的主机地址。当前得到的配置为->${this.m_hostName}`,
-            ),
+            chalk.red(`自动获取主机地址失败！请在配置文件中配置正确的主机地址。`),
           );
         }
       }
+      MainConfig.config.ifLog && console.log(`当前获取的主机地址为:${this.m_hostName}`);
     }
     //
-    MainConfig.config.ifLog && console.log(`当前获取的主机地址为:${this.m_hostName}`);
     //
     return this.m_hostName;
   }

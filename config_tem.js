@@ -17,8 +17,8 @@ module.exports = {
   ifLog: false,
   /** 断点类型 */
   breakpointType: 'browser',
-  /** 是否在启动时打开主页 */
+  /** 是否在启动时在浏览器打开主页 */
   ifOpenHome: true,
-  /** 是否立即刷新浏览器 */
+  /** 有更新时是否立即刷新浏览器 */
   ifUpdateNow: false,
 };

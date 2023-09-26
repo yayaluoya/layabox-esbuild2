@@ -5,8 +5,8 @@ import { exec } from 'child_process';
  * @param _url 该url
  */
 export function openUrl(_url: string) {
-    let ch_p = exec(`start ${_url}`);
-    ch_p.on('error', (mes) => {
-        // console.log(mes);
-    });
+  let ch_p = exec(`start ${_url}`);
+  ch_p.on('error', (mes) => {
+    // console.log(mes);
+  });
 }

@@ -11,7 +11,7 @@ export default class SrcProxy {
   /**
    * 开始
    */
-  public static async start() {
+  static async start() {
     let outdir = path.join(
       ResURL.rootURL,
       `./node_modules/.layabox_esbuild_www_${md5(process.cwd())}`,
@@ -21,10 +21,9 @@ export default class SrcProxy {
       outdir,
       bundle: true,
     });
-
+    // 加监听
     await ctx.watch();
-
-    let { host, port } = await ctx.serve({
+    let { port } = await ctx.serve({
       servedir: outdir,
     });
     return port;

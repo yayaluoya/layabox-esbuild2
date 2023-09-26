@@ -13,13 +13,13 @@ import PublicConfig from '../../config/PublicConfig';
 export default class BinTool {
   /**
    * 获取web工具内容
-   * @param _url 地址
+   * @param _url
+   * @param resProxyPort
+   * @returns
    */
-  public static getWebTool(_url: string, resProxyPort: number): Promise<string> {
+  static getWebTool(_url: string, resProxyPort: number): Promise<string> {
     return new Promise<string>((r) => {
-      //获取地址
       let _jsUrl: string = join(ResURL.publicURL, _url);
-      //读取文件
       readFile(_jsUrl, (err, data) => {
         if (err) {
           r(`没有找到web工具脚本,${_jsUrl}')`);
@@ -53,9 +53,8 @@ export default class BinTool {
   /**
    * 获取主页代码
    */
-  public static getHomePage(): Promise<string> {
+  static getHomePage(): Promise<string> {
     return new Promise<string>((r) => {
-      //读取主页html
       let _html: string;
       let _htmlUrl: string = join(ResURL.binPath, MainConfig.config.homePage);
       readFile(_htmlUrl, (err, data) => {
@@ -72,7 +71,7 @@ export default class BinTool {
 <script type="text/javascript" src="${ResURL.publicSrcURL}${PublicConfig.webToolJsName.main}?q=${PublicConfig.webToolJsOnlyKey.main}"></script>
 <script type="text/javascript" src="${ResURL.publicSrcURL}${PublicConfig.webToolJsName.alert}?q=${PublicConfig.webToolJsOnlyKey.alert}"></script>
 </head>
-                `,
+          `,
         );
         //在所有脚本前加上webload脚本
         _html = _html.replace(
@@ -83,7 +82,7 @@ export default class BinTool {
         );
         //添加提示
         _html = `
-<!-- 此文件被包装过，和源文件内容有差异。 -->
+<!-- 此内容被包装过，和源文件内容有差异。 -->
 ${_html}
                 `;
         //

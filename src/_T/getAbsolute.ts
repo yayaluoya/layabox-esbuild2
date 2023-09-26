@@ -6,9 +6,9 @@ import path from 'path';
  * @returns
  */
 export function getAbsolute(_path: string) {
-    if (path.isAbsolute(_path)) {
-        return _path;
-    } else {
-        return path.join(process.cwd(), _path);
-    }
+  if (path.isAbsolute(_path)) {
+    return _path;
+  } else {
+    return path.join(process.cwd(), _path);
+  }
 }

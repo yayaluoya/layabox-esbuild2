@@ -1,0 +1,7 @@
+# compiled output
+/node_modules
+
+/public/**
+!/public/dist/
+
+/src

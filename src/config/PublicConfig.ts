@@ -15,15 +15,20 @@ type webToolJsName = {
  * PublicConfig
  */
 export default class PublicConfig {
-  /** web工具脚本 */
-  public static webToolJsName: webToolJsName = {
+  /**
+   * web工具脚本
+   */
+  static webToolJsName: webToolJsName = {
     main: 'main.js',
     css: 'webTool.css',
     load: 'loadTool.js',
     alert: 'alertTool.js',
   };
-  /** web工具脚本唯一key */
-  public static webToolJsOnlyKey: webToolJsName = {
+
+  /**
+   * web工具脚本唯一key
+   */
+  static webToolJsOnlyKey: webToolJsName = {
     main: `${Date.now()}_1_${Tool.getRandomStr()}`,
     css: `${Date.now()}_3_${Tool.getRandomStr()}`,
     load: `${Date.now()}_4_${Tool.getRandomStr()}`,
