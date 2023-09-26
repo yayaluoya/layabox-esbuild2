@@ -2,8 +2,8 @@
 
 [![NPM version][npm-image]][npm-url]
 
-[npm-image]: https://img.shields.io/npm/v/layabox-esbuild
-[npm-url]: https://npmjs.org/package/layabox-esbuild
+[npm-image]: https://img.shields.io/npm/v/layabox-esbuild2
+[npm-url]: https://npmjs.org/package/layabox-esbuild2
 
 ## 介绍
 

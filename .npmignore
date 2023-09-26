@@ -1,7 +1,11 @@
 # compiled output
 /node_modules
 
-/public/**
+/public/*
 !/public/dist/
+!/public/res/
 
 /src
+
+/.github
+/.vscode
