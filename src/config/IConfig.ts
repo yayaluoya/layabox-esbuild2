@@ -1,3 +1,5 @@
+import { BuildOptions } from 'esbuild';
+
 /**
  * 配置表接口
  */
@@ -15,10 +17,13 @@ export default interface IConfig {
   hostName?: string;
   /** 是否打印日志 */
   ifLog: boolean;
-  /** 断点类型 */
-  breakpointType: 'vscode' | 'browser';
   /** 是否在启动时在浏览器打开主页 */
   ifOpenHome: boolean;
   /** 有更新时是否立即刷新浏览器 */
   ifUpdateNow: boolean;
+  /**
+   * esbuild的配置
+   * loader https://esbuild.github.io/api/#loader
+   */
+  esbuild?: Pick<BuildOptions, 'loader'>;
 }

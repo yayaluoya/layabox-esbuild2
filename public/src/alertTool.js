@@ -114,7 +114,7 @@ window.addEventListener('load', function () {
       console.log(
         ...esbuildTool.consoleEx.pack(
           esbuildTool.consoleEx.getStyle('#eeeeee', '#08d9d6'),
-          type + ':' + value,
+          type,
         ),
       );
       //弹出提示框

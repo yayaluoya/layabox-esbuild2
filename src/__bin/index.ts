@@ -41,9 +41,13 @@ const options = program.opts();
     },
     homePage: 'index.html',
     ifLog: false,
-    breakpointType: 'browser',
     ifOpenHome: true,
     ifUpdateNow: false,
+    esbuild: {
+      loader: {
+        '.txt': 'text',
+      },
+    },
   };
   /** 配置文件 */
   let config = await getConfig(configName).catch(() => ({}));

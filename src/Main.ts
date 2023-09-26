@@ -19,7 +19,7 @@ export default class layaboxEsbuild {
   static async start(config: IConfig) {
     MainConfig.config = config;
     //代理src
-    let strProxyPort = await SrcProxy.start();
+    let strProxyPort = await SrcProxy.start(config.esbuild);
     //代理bin
     let binProxyPort = await BinProxy.start(strProxyPort);
     //提示bin目录的主页地址
