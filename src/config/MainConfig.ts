@@ -14,7 +14,7 @@ export default class MainConfig {
    * @param cs
    * @returns
    */
-  public static merge(c: IConfig, ...cs: Partial<IConfig>[]): IConfig {
+  static merge(c: IConfig, ...cs: Partial<IConfig>[]): IConfig {
     return ObjectUtils.merge(c, ...(cs as any));
   }
 }

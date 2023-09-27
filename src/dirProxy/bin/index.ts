@@ -55,15 +55,15 @@ export default class BinProxy {
               });
               break;
             //入口js文件
-            case new RegExp(`^/?${MainConfig.config.index.js.replace(/^\//, '')}$`).test(
-              url,
-            ):
+            case new RegExp(
+              `^/?${MainConfig.config.index.js.replace(/^\.\//, '')}$`,
+            ).test(url):
               let req1 = http.request(
                 {
                   host: HttpTool.getHostname,
                   port: srcProxyPort,
                   path: `/${MainConfig.config.index.ts
-                    .replace(/^\/+/, '')
+                    .replace(/^\.\//, '')
                     .replace(/\.ts$/, '.js')}`,
                   method: 'GET',
                   headers: req.headers,
@@ -71,7 +71,6 @@ export default class BinProxy {
                 (res_) => {
                   res.writeHead(res_.statusCode, {
                     ...crossDomainHead,
-                    'Content-Type': mime.getType('js') + ';charset=UTF-8',
                     ...res_.headers,
                   });
                   res_.addListener('data', (_) => {
@@ -84,7 +83,7 @@ export default class BinProxy {
               );
               req1.end();
               req1.addListener('error', (err) => {
-                console.log(`获取代理${MainConfig.config.index.ts}文件出错了`, err);
+                console.log(`获取代理文件${MainConfig.config.index.ts}出错了`, err);
               });
               break;
             //其他文件

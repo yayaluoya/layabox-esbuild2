@@ -47,8 +47,11 @@ const consoleEx = (function () {
     consoleEx: consoleEx,
     //配置相关
     config: {
+      /** 是否立即更新 */
       ifUpdateNow: $$ifUpdateNow,
+      /** 包配置信息 */
       packageJson: JSON.parse('$$packageJson'),
+      /** esbuild的事件 */
       esbuildE: '$$esbuildE',
     },
   };

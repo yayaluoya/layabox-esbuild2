@@ -124,8 +124,8 @@ window.addEventListener('load', function () {
         confirmEx(
           `
           <div class="title">项目内容有更新 🔔</div>
-          <div class="content">点击消息框或点击确认按钮或按Enter键刷新页面，点击背景或取消按钮取消</div>
-                    `,
+          <div class="content">点击消息框或点击确认按钮或按Enter键刷新页面，点击背景或取消按钮取消此次更新</div>
+          `,
           (flag) => {
             _updateNumber = 0;
             _ifConfirm = false;

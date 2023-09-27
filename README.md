@@ -1,5 +1,11 @@
 # Layabox-esbuild2
 
+#### 对比上一版 layabox-esbuild
+
+- 直接用 esbuild 自带的服务和目录监听，更加快速，简洁，可靠了。
+- 代码不是用 esm 加载而是用的单文件加载，所以加载速度更快了。
+- 配置更简单了。
+
 [![NPM version][npm-image]][npm-url]
 
 [npm-image]: https://img.shields.io/npm/v/layabox-esbuild2
@@ -25,7 +31,7 @@
   它是用 Go 语言编写的。
   该语言可以编译为本地代码解析，生成最终打包文件和生成 source maps 的操作全部完全并行化，无需昂贵的数据转换，只需很少的几步即可完成所有操作。
   该库以提高编译速度为编写代码时的第一原则，并尽量避免不必要的内存分配。
-  更多详细介绍，详见 Breword 翻译的 <a href="https://www.breword.com/evanw-esbuild">esbuild 官方文档</a>;
+  更多详细介绍，详见 Breword 翻译的 <a href="https://esbuild.github.io/">esbuild 官方文档</a>;
 
 ## 对比其它工具
 
@@ -40,7 +46,7 @@
 
 - npm 安装。
 
-  `npm i layabox-esbuild2 -g` 注意是全局安装，安装一次就行了。
+  `npm i layabox-esbuild2 -g` 注意是全局安装，安装一次就行了，如果之前安装了最好是卸载一下`npm uni layabox-esbuild2 -g`
 
 ## 命令
 
@@ -71,12 +77,12 @@
 
 ## 全部配置选项
 
-```javascript
+```typescript
 /**
  * 配置表接口
  */
 export default interface IConfig {
-    /** 入口 */
+  /** 入口 */
   index: {
     /** ts入口地址，相对于项目src目录 */
     ts: string;
@@ -96,8 +102,25 @@ export default interface IConfig {
   /**
    * esbuild的配置
    * loader https://esbuild.github.io/api/#loader
+   * plugins https://esbuild.github.io/plugins/
+   * ...
    */
   esbuild?: Pick<BuildOptions, 'loader'>;
+}
+```
+
+- esbuild 默认配置
+
+```javascript
+{
+  /** 此选项更改给定输入文件的解释方式。 */
+  loader: {
+    /** 普通文本 */
+    '.txt': 'text',
+    /** layabox的shader */
+    '.fs': 'text',
+    '.vs': 'text',
+  },
 }
 ```
 
@@ -106,3 +129,5 @@ export default interface IConfig {
 <img src="./res/test.png">
 
 当项目内容有更新时就会出现一个弹出提示项目有更新点击相关按钮就可以更新页面，当从编辑器切换到浏览器时如果触发了浏览器的获取焦点事件就能自动更新，是不是很方便呢。
+
+每当您重新加载时，esbuild 提供的文件始终是最新的，这意味着 esbuild 永远不会提供过时的构建结果。所以只要你改了代码直接来刷新页面就行了，因为刷新页面后的运行的代码永远是最新的。

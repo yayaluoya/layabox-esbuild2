@@ -24,6 +24,34 @@ export default interface IConfig {
   /**
    * esbuild的配置
    * loader https://esbuild.github.io/api/#loader
+   * plugins https://esbuild.github.io/plugins/
+   * ...
    */
   esbuild?: Pick<BuildOptions, 'loader'>;
+}
+
+/**
+ * 获取默认配置
+ * @returns
+ */
+export function getDefConfig(): IConfig {
+  return {
+    index: {
+      ts: 'Main.ts',
+      js: 'js/bundle.js',
+    },
+    homePage: 'index.html',
+    ifLog: false,
+    ifOpenHome: true,
+    ifUpdateNow: false,
+    esbuild: {
+      loader: {
+        /** 普通文本 */
+        '.txt': 'text',
+        /** layabox的shader */
+        '.fs': 'text',
+        '.vs': 'text',
+      },
+    },
+  };
 }

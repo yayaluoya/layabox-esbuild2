@@ -5,7 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import bugLog from './bugLog';
 import layaboxEsbuild from '../Main';
-import IConfig from '../config/IConfig';
+import IConfig, { getDefConfig } from '../config/IConfig';
 import PackageConfig from '../config/PackageConfig';
 import { getAbsolute } from '../_T/getAbsolute';
 import MainConfig from '../config/MainConfig';
@@ -34,21 +34,7 @@ const options = program.opts();
 
 (async () => {
   /** 默认配置 */
-  let defaultConfig: IConfig = {
-    index: {
-      ts: 'Main.ts',
-      js: 'js/bundle.js',
-    },
-    homePage: 'index.html',
-    ifLog: false,
-    ifOpenHome: true,
-    ifUpdateNow: false,
-    esbuild: {
-      loader: {
-        '.txt': 'text',
-      },
-    },
-  };
+  let defaultConfig = getDefConfig();
   /** 配置文件 */
   let config = await getConfig(configName).catch(() => ({}));
   /** 临时配置文件 */
