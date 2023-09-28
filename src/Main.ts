@@ -8,6 +8,7 @@ import SrcProxy from './dirProxy/src';
 import BinProxy from './dirProxy/bin';
 import HttpTool from './http/HttpTool';
 import { openUrl } from './_T/openUrl';
+import { getVar } from './config/getVar';
 
 /**
  * layaboxEsbuild构建实例
@@ -41,6 +42,13 @@ export default class layaboxEsbuild {
     console.log(chalk.gray(`当前esbuild版本@${version}`));
     console.log(chalk.gray('执行 leb -h 查看帮助或解决bug'));
     console.log(chalk.gray('...'));
+    getVar().then((res) => {
+      if (res.msgs && res.msgs.length > 0) {
+        res.msgs.forEach(({ msg, color }) => {
+          console.log(chalk[color || 'gray'](msg));
+        });
+      }
+    });
     //打开本地主页
     MainConfig.config.ifOpenHome && openUrl(HttpTool.getPath('local', binProxyPort));
     //测试
