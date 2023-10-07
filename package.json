@@ -1,6 +1,6 @@
 {
   "name": "layabox-esbuild2",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "用esbuild来构建layabox项目，修改代码后立即就能看到更改，而不用傻傻等编译。",
   "main": "index.js",
   "bin": {

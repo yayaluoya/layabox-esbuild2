@@ -27,7 +27,7 @@ export default interface IConfig {
    * plugins https://esbuild.github.io/plugins/
    * ...
    */
-  esbuild?: Pick<BuildOptions, 'loader'>;
+  esbuild?: Pick<BuildOptions, 'loader' | 'logLevel'>;
 }
 
 /**
@@ -45,6 +45,8 @@ export function getDefConfig(): IConfig {
     ifOpenHome: true,
     ifUpdateNow: false,
     esbuild: {
+      /** 日志级别 */
+      logLevel: 'debug',
       loader: {
         /** 普通文本 */
         '.txt': 'text',
