@@ -24,7 +24,11 @@ export default class layaboxEsbuild {
     //代理bin
     let binProxyPort = await BinProxy.start(strProxyPort);
     //提示bin目录的主页地址
-    console.log(chalk.gray('---->'));
+    console.log(
+      chalk.gray(
+        `${PackageConfig.package.name}@${PackageConfig.package.version} 快捷命令:leb`,
+      ),
+    );
     console.log(
       chalk.magenta('本地主页:'),
       chalk.blue(HttpTool.getPath('local', binProxyPort)),
@@ -34,21 +38,16 @@ export default class layaboxEsbuild {
       chalk.magenta('局域网主页:'),
       chalk.blue(HttpTool.getPath('localNetwork', binProxyPort)),
     );
-    console.log(
-      chalk.gray(
-        `> ${PackageConfig.package.name}@${PackageConfig.package.version} 快捷命令:leb`,
-      ),
-    );
-    console.log(chalk.gray(`当前esbuild版本@${version}`));
+    console.log(chalk.gray(`esbuild@${version}`));
     console.log(chalk.gray('执行 leb -h 查看帮助或解决bug'));
-    console.log(chalk.gray('...'));
-    getVar().then((res) => {
+    await getVar().then((res) => {
       if (res.msgs && res.msgs.length > 0) {
         res.msgs.forEach(({ msg, color }) => {
           console.log(chalk[color || 'gray'](msg));
         });
       }
     });
+    console.log(chalk.gray('...'));
     //打开本地主页
     MainConfig.config.ifOpenHome && openUrl(HttpTool.getPath('local', binProxyPort));
     //测试

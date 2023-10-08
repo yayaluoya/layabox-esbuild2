@@ -100,7 +100,7 @@ export default interface IConfig {
   /** 有更新时是否立即刷新浏览器 */
   ifUpdateNow: boolean;
   /**
-   * esbuild的配置
+   * esbuild的配置 https://esbuild.github.io
    * loader https://esbuild.github.io/api/#loader
    * plugins https://esbuild.github.io/plugins/
    * ...

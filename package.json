@@ -1,6 +1,6 @@
 {
   "name": "layabox-esbuild2",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "用esbuild来构建layabox项目，修改代码后立即就能看到更改，而不用傻傻等编译。",
   "main": "index.js",
   "bin": {
@@ -8,7 +8,7 @@
     "leb2": "./dist/__bin/index.js"
   },
   "scripts": {
-    "ts-build": "tsc -w",
+    "tsc-w": "tsc -w",
     "npm-publish": "npm publish"
   },
   "repository": {
@@ -27,7 +27,6 @@
     "commander": "^11.0.0",
     "esbuild": "^0.19.3",
     "internal-ip": "^6.2.0",
-    "md5": "^2.3.0",
     "mime": "^3.0.0",
     "moment": "^2.29.4",
     "portfinder": "^1.0.32"

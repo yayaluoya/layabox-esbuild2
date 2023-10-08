@@ -39,6 +39,6 @@ export default class ResURL {
 
   /** 公共目录名称 */
   static get publicDirName(): string {
-    return '_⚙️_leb2';
+    return '_⚙️leb2';
   }
 }
