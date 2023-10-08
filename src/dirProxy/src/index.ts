@@ -36,6 +36,7 @@ export default class SrcProxy {
             '.fs': 'text',
             '.vs': 'text',
           },
+          logLevel: 'debug',
         } as esbuild.BuildOptions,
         esbuildOp,
       ),
