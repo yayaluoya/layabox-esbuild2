@@ -8,6 +8,7 @@
     "leb2": "./dist/__bin/index.js"
   },
   "scripts": {
+    "rm-dist": "node ./.node/clearDist.js",
     "tsc-w": "tsc -w",
     "npm-publish": "npm publish"
   },
